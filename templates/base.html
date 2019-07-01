@@ -1,0 +1,105 @@
+<!doctype html>
+{% load staticfiles %}
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1, user-scalable=0" />
+<meta name="csrf-token" content="">
+<title>Tree View</title>
+<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'css/all.min.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css">
+</head>
+<body>
+   <ul class="main_menu">
+      <li class="has_child"><i class="fas fa-arrow-alt-right"></i> 
+         <span class="collapse_btn"></span>
+         <span class="title">Project Initition</span>
+         <div class="menu_details">
+            <a href="#" class="add_block">Add Below</a> <a href="#">Move</a>  <a href="#" class="delete_block">Delete</a>
+         </div>
+         <ul class="sub_menu add_menus">
+            
+         </ul>
+      </li>
+      <li class="has_child"><i class="fas fa-arrow-alt-right"></i> 
+         <span class="collapse_btn"></span>
+         <span class="title">Completion</span>
+         <div class="menu_details">
+            <a href="#" class="add_block">Add Below</a> <a href="#">Move</a> <a href="#" class="delete_block">Delete</a>
+         </div>
+         <ul class="sub_menu">
+            
+         </ul>
+      </li>
+   </ul>
+  
+   
+   
+</body> 
+<script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script> 
+<script type="text/javascript" src="{% static 'js/bootstrap.bundle.min.js' %}"></script> 
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script type="text/javascript">
+    $(".main_menu > li .collapse_btn").click(function(){
+      $(this).siblings('.menu_details').toggle('active');
+      $(this).siblings('.submenu-btn').toggle('active');
+      $(this).toggleClass('active');
+       $(this).siblings('.main_menu > li > .sub_menu').removeClass('open');
+   });
+   
+   $('.main_menu li:has(ul)').addClass('hassub');
+   $(".hassub").append('<span class="submenu-btn"><span class="fal fa-chevron-down"></span></span>');
+   
+   $(".main_menu > li > .submenu-btn").click(function(){
+      if ($(this).siblings('.main_menu > li > .sub_menu').hasClass('open')) {
+         $(this).siblings('.main_menu > li > .sub_menu').removeClass('open');
+         // $('.main_menu > li > .sub_menu').removeClass('open');
+      }
+      else {
+         // $('.main_menu > li > .sub_menu').removeClass('open');
+         $(this).siblings('.main_menu > li > .sub_menu').addClass('open');
+      }
+   });
+   
+   var counter = 1;
+   $(document).on("click",".add_block",function() {
+        
+        var ul = $(this).closest('div').closest(".has_child").find(".add_menus")[0]
+        
+        
+        if (ul == undefined){
+            var id = $(this).attr('id')
+            var counter = "level_two_"
+            listitem = '<li class="show_list_item" id="two_'+ (counter+1) +'"><i class="fas fa-arrow-alt-right" ></i><button >Block</button><button >Branch</button><button >Randomiser</button> <a href="#" class="add_block">Add Below</a></li>'
+            $(this).closest('li').append(listitem); 
+            counter++;
+            
+        }else{
+          $(ul).addClass('open');
+          if($(ul).children()>0){
+            counter++;
+          }
+          listitem = '<li class="show_list_item" id="one_'+ (counter) +'"><i class="fas fa-arrow-alt-right" ></i><button >Block</button><button >Branch</button><button >Randomiser</button> <a href="#" class="add_block">Add Below</a></li>' 
+          $(ul).append(listitem); 
+
+          
+        }
+        
+        
+        
+    
+   })
+
+   $(".delete_block").click("on", function(){
+    $(this).closest('div').closest(".has_child").remove();
+   })
+   
+   $( ".main_menu" ).sortable();
+
+
+
+</script>
+</body>
+</html>

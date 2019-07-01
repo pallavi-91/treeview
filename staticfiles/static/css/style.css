@@ -1,0 +1,126 @@
+body {
+   overflow-x: hidden;
+   color: #333;
+   font-weight: 400;
+   font-size: 16px
+}
+a {
+   -webkit-transition: all ease-in-out 0.4s;
+   -moz-transition: all ease-in-out 0.4s;
+   -ms-transition: all ease-in-out 0.4s;
+   -o-transition: all ease-in-out 0.4s;
+   transition: all ease-in-out 0.4s;
+   color: #333;
+   display: inline-block;
+}
+a:hover, a:focus {
+   text-decoration: none;
+   color: #333;
+}
+ul{
+   list-style: none;
+   margin: 0;
+}
+.main_menu{
+   margin-left: 30px;
+   margin-top: 30px;
+   padding: 0 30px;
+   position: relative;
+}
+.main_menu:before{
+   content: '';
+   position: absolute;
+   top: 0;
+   bottom: 18px;
+   left: -5px;
+   width: 5px;
+   background: #e1e1e1;
+}
+.main_menu .sub_menu{
+   max-height: 0;
+   overflow: hidden;
+   transition: all 0.4s;
+   margin-left: 20px;
+   padding-left: 35px;
+   position: relative;
+}
+.main_menu .sub_menu:before{
+   content: '';
+   position: absolute;
+   top: 5px;
+   bottom: 31px;
+   left: 0;
+   width: 5px;
+   background: #e1e1e1;
+}
+.main_menu .sub_menu.open{
+   max-height: 300px;
+   padding-top: 15px;
+}
+.main_menu li{
+   padding: 0;
+   position: relative;
+   margin-bottom: 15px;
+   background: #f2f2f2;
+   padding-right: 20px;
+}
+.main_menu li > a{
+   background: #f2f2f2;
+   display: inline-block;
+   width: 100%;
+   padding: 5px 20px;
+}
+.main_menu li i{
+   position: absolute;
+   left: -32px;
+   top: 5px;
+   font-size: 20px;
+   cursor: pointer;
+   color: #e1e1e1;
+}
+.menu_details{
+   display: none;
+   width: 100%;
+   text-align: left;
+   padding: 15px 60px 15px 15px;
+      
+}
+.main_menu li .submenu-btn{
+   display: none;
+   position: absolute;
+   right: 20px;
+   top: 60px;
+   cursor: pointer;
+}
+.main_menu li .title{
+   display: inline-block;
+   width: 100%;
+   vertical-align: bottom;
+   padding: 10px 15px;
+   background: #f2f2f2;
+}
+.menu_details a{
+   color: #0A688F;
+   margin-right: 15px;
+}
+.main_menu li .sub_menu li a{
+   background: #fff;
+}
+.collapse_btn{
+   position: absolute;
+   top: 8px;
+   right: 20px;
+   cursor: pointer;
+}
+.collapse_btn:before{
+   content: '\f0fe';
+   font-size: 20px;
+   font-family:"Font Awesome 5 Pro";
+}
+.collapse_btn.active:before{
+   content: '\f146';
+}
+
+
+
+

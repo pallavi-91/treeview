@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1, user-scalable=0" />
+<meta name="csrf-token" content="">
+<title>Tree View</title>
+<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="css/all.min.css" rel="stylesheet" type="text/css">
+<link href="css/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+   <ul class="main_menu">
+      <li class="has_child"><i class="fas fa-arrow-alt-right"></i> 
+         <span class="collapse_btn"></span>
+         <span class="title">Home</span>
+         <div class="menu_details">
+            <a href="#">Move</a> <a href="#">Options</a> <a href="#">Delete</a>
+         </div>
+         <ul class="sub_menu">
+            <li><i class="fas fa-arrow-alt-right"></i> <a href="#">Home 1</a></li>
+            <li><i class="fas fa-arrow-alt-right"></i> <a href="#">Home 2</a></li>
+            <li><i class="fas fa-arrow-alt-right"></i> <a href="#">Home 3</a></li>
+            <li><i class="fas fa-arrow-alt-right"></i> <a href="#">Home 4</a></li>
+         </ul>
+      </li>
+      <li class="has_child"><i class="fas fa-arrow-alt-right"></i> 
+         <span class="collapse_btn"></span>
+         <span class="title">Home</span>
+         <div class="menu_details">
+            <a href="#">Move</a> <a href="#">Options</a> <a href="#">Delete</a>
+         </div>
+         <ul class="sub_menu">
+            <li><i class="fas fa-arrow-alt-right"></i> <a href="#">Home 1</a></li>
+            <li><i class="fas fa-arrow-alt-right"></i> <a href="#">Home 2</a></li>
+            <li><i class="fas fa-arrow-alt-right"></i> <a href="#">Home 3</a></li>
+            <li><i class="fas fa-arrow-alt-right"></i> <a href="#">Home 4</a></li>
+         </ul>
+      </li>
+   </ul>
+   
+   
+   
+<script type="text/javascript" src="js/jquery.min.js"></script> 
+<script type="text/javascript" src="js/bootstrap.bundle.min.js"></script> 
+<script type="text/javascript">
+   $(".main_menu > li .collapse_btn").click(function(){
+      $(this).siblings('.menu_details').toggle('active');
+      $(this).siblings('.submenu-btn').toggle('active');
+      $(this).toggleClass('active');
+       $(this).siblings('.main_menu > li > .sub_menu').removeClass('open');
+   });
+   
+   $('.main_menu li:has(ul)').addClass('hassub');
+   $(".hassub").append('<span class="submenu-btn"><span class="fal fa-chevron-down"></span></span>');
+   
+   $(".main_menu > li > .submenu-btn").click(function(){
+      if ($(this).siblings('.main_menu > li > .sub_menu').hasClass('open')) {
+         $(this).siblings('.main_menu > li > .sub_menu').removeClass('open');
+         $('.main_menu > li > .sub_menu').removeClass('open');
+      }
+      else {
+         $('.main_menu > li > .sub_menu').removeClass('open');
+         $(this).siblings('.main_menu > li > .sub_menu').addClass('open');
+      }
+   });
+   
+
+
+</script>
+</body>
+</html>
